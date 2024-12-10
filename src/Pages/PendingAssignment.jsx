@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import {  Link, useLoaderData, useNavigate } from "react-router-dom";
+import {  Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Components/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -11,7 +11,7 @@ const PendingAssignment = () => {
     const submitedAssignments = useLoaderData();
     console.log(submitedAssignments);
 
-    const handleGiveMark = (id) => {
+    const handleGiveMark = () => {
         
             Swal.fire({
                 icon: "error",
@@ -19,6 +19,7 @@ const PendingAssignment = () => {
                 text: "You can't give mark!",
                 footer: '<p className="text-red-600">This is your assignment. <br/>So, You can only give mark the assignment which is not created by you.</p>'
             });
+
         }
     return (
         <div className="lg:mx-24 p-4 lg:p-12">
@@ -62,7 +63,7 @@ const PendingAssignment = () => {
                                           My Assignment
                                         </button>
                                     ) : (
-                                        <Link to={`/giveMarks/${submitedAssignment._id}`} className="px-3 py-2 font-semibold rounded-md bg-violet-400 text-gray-900 hover:bg-violet-300 hover:-tracking-wide cursor-pointer">
+                                        <Link to={`/giveMarks/${submitedAssignment._id}`} className="px-7 py-2 font-semibold rounded-md bg-violet-400 text-gray-900 hover:bg-violet-300 hover:-tracking-wide cursor-pointer">
                                             Give Mark
                                         </Link>
                                     )}

@@ -85,7 +85,7 @@ const Assignment = () => {
     return (
         <div className="p-4 lg:mx-24">
             <div className="flex flex-col items-center justify-center  pb-10 space-y-5">
-                <h1 className="text-4xl lg:text-5xl font-bold text-center">Assignments</h1>
+                <h1 className="text-3xl lg:text-4xl font-bold text-center">Assignments</h1>
                 <p className="text-center lg:w-5/12 text-gray-500">Most interesting part to have the fresh mind by keeping our product. Doing assignment is the way to live and refresh your mind.</p>
             </div>
             {/* Filter */}
@@ -106,14 +106,14 @@ const Assignment = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mt-10 mb-12">
+            <div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-3 gap-7 mt-10 mb-12">
                 {
                     displayAssign.map(assignment =>
-                        <div key={assignment._id} className="rounded-2xl shadow-2xl border-2 ">
+                        <div key={assignment._id} className="flex h-[590px] flex-col  rounded-2xl shadow-2xl border-2 ">
                             <img src={assignment.thumbnailImageURL} alt="" className="object-cover object-center w-full rounded-t-md h-80" />
                             <div className="flex flex-col justify-between p-6 space-y-8">
                                 <div className="space-y-2">
-                                    <h2 className="text-3xl font-semibold tracking-wide text-purple-900 font-serif">{assignment.title}</h2>
+                                    <h2 className="text-3xl font-semibold tracking-wide text-purple-900 font-serif">{assignment.title.slice(0,20)}</h2>
                                 </div>
                                 <div className='space-y-1'>
                                     <div className='flex items-center justify-between'>
@@ -130,8 +130,8 @@ const Assignment = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <Link to={`/viewAssignment/${assignment._id}`}> <button type="button" className="flex btn  items-center justify-center w-full p-3 font-extrabold tracking-wide rounded-md  "><span className='text-blue-400'><TbListDetails className='text-xl' /></span> View Assignment</button></Link>
+                                <div className="">
+                                    <Link to={`/viewAssignment/${assignment._id}`}> <button type="button" className="flex btn  items-center justify-center w-full p-3 font-extrabold tracking-wide rounded-md "><span className='text-blue-400'><TbListDetails className='text-xl' /></span> View Assignment</button></Link>
                                 </div>
                             </div>
                         </div>

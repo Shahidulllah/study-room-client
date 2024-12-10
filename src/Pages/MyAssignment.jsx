@@ -12,7 +12,7 @@ const MyAssignment = () => {
             setMyAssignments(data);
             console.log(data)
         })
-    },[])
+    },[user.email])
 
     return (
         <div className="p-4 lg:mx-24 lg:p-10 ">

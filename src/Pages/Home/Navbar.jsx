@@ -33,26 +33,28 @@ const Navbar = () => {
     }
 
     const navlinks = <>
-        <li><NavLink to='/assignments'>Assignments</NavLink></li>
+        <NavLink className={'  border-b-2 hover:bg-slate-300 px-3 py-2 rounded-lg'} to='/'>Home</NavLink>
+        <NavLink  className={'  border-b-2 hover:bg-slate-300 px-3 py-2 rounded-lg'} to='/assignments'>Assignments</NavLink>
+
         {
             user &&
             <>
-                <li><NavLink to='/createAssignment'>Create Assignments</NavLink></li>
-                <li><NavLink to='/pendingAssignment'>Pending Assignments</NavLink></li>
+                <NavLink  className={'  border-b-2 hover:bg-slate-300 px-3 py-2 rounded-lg'} to='/createAssignment'>Create Assignments</NavLink>
+                <NavLink  className={'  border-b-2 hover:bg-slate-300 px-3 py-2 rounded-lg'} to='/pendingAssignment'>Pending Assignments</NavLink>
             </>
         }
 
 
     </>
     return (
-        <div className=" lg:p-2 bg-blue-100 sticky top-0 z-50">
-            <div className="text-center p-4 lg:mx-24">
-                <header className="p-3">
-                    <div className="container flex justify-between h-12 mx-auto">
+        <div className=" bg-blue-100 sticky top-0 z-50">
+            <div className="text-center lg:mx-24">
+                <nav className="p-">
+                    <div className="container flex justify-between h-auto mx-auto">
                         <Link to="/">
-                            <div className="flex flex-col justify-center items-center gap-1 -mt-4">
-                                <h1 className=""><span className="text-4xl font-bold">Study</span></h1>
-                                <h1><span className="bg-red-500 text-white rounded-2xl font-bold px-4 py- text-2xl font-serif">Room</span></h1>
+                            <div className="flex flex-col justify-center items-center">
+                                <h1 className=""><span className="text-2xl lg:text-3xl font-bold">Study</span></h1>
+                                <h1><span className="bg-red-500 text-white rounded-2xl font-bold px-4  text-sm font-serif">Room</span></h1>
                             </div>
                         </Link>
                         <div className="navbar-center hidden lg:flex  justify-end w-8/12">
@@ -97,7 +99,7 @@ const Navbar = () => {
                                             </div>
                                         </div>
                                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52">
-                                           <Link to ="/myAssignment"> <li className="border-slate-300 border-b"><button>My Assignments</button></li></Link>
+                                            <NavLink  to="/myAssignment"> <li className="border-slate-300 border-b"><button>My Assignments</button></li></NavLink>
                                             <li><button onClick={handleLogOut}>Log Out</button></li>
                                         </ul>
                                     </div>
@@ -106,34 +108,34 @@ const Navbar = () => {
 
 
                         </div>
-                        <button className="p-4 lg:hidden">
+                        <button className="p-4 lg:hidden flex flex-col justify-center">
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn m-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-800">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg></div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52 border-slate-300 border-b">
-                                   {
-                                    user &&  <div className="flex flex-col items-center justify-center">
-                                    <div className=" w-9 mb-2 ">
-                                        <img className="rounded-full" src={user?.photoURL || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"} />
-                                    </div>
-                                    <div className="text-center font-serif mb-3 border-b-">
-                                        <h1 className="font-semibold">{user?.displayName}</h1>
-                                    </div>
-                                </div>
-                                   }
+                                    {
+                                        user && <div className="flex flex-col items-center justify-center">
+                                            <div className=" w-9 mb-2 ">
+                                                <img className="rounded-full" src={user?.photoURL || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"} />
+                                            </div>
+                                            <div className="text-center font-serif mb-3 border-b-">
+                                                <h1 className="font-semibold">{user?.displayName}</h1>
+                                            </div>
+                                        </div>
+                                    }
                                     {navlinks}
-                                   {user && <li><button>My Assignments</button></li>}
-                                   { !user && 
-                                   <li><Link to="/login">Login</Link></li>}
-                                    {user&& <li><button onClick={handleLogOut}>Log Out</button></li>}
+                                    {user &&  <NavLink  className={'  border-b-2 hover:bg-slate-300 px-3 py-2 rounded-lg'} to='/myAssignment'>My Assignments</NavLink>}
+                                    {!user &&
+                                        <li><Link to="/login">Login</Link></li>}
+                                    {user && <li><button onClick={handleLogOut}>Log Out</button></li>}
 
                                 </ul>
 
                             </div>
                         </button>
                     </div>
-                </header>
+                </nav>
             </div>
         </div>
     );
